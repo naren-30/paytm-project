@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "kalyan3599/paytm-static-site"
-        DOCKER_CREDENTIALS_ID = "1234"  // Jenkins Credentials ID
+        DOCKER_CREDENTIALS_ID = "dockerhub-creds"  // Jenkins Credentials ID
     }
 
     stages {
@@ -17,6 +17,21 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t ${DOCKER_IMAGE}:latest .'
+                }
+            }
+        }
+
+        stage('Run Container for Test') {
+            steps {
+                script {
+                    // Stop old container if running
+                    sh 'docker rm -f paytm-static-test || true'
+                    
+                    // Run container on port 8080
+                    sh 'docker run -d --name paytm-static-test -p 8080:80 ${DOCKER_IMAGE}:latest'
+                    
+                    // Quick test (optional)
+                    sh 'curl -I http://localhost:8080 || true'
                 }
             }
         }
