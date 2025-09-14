@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "kalyan3599/paytm-static-site"
-        DOCKER_CREDENTIALS_ID = "dockerhub-creds"  // Jenkins Credentials ID
+        DOCKER_CREDENTIALS_ID = "1234"  // Jenkins Credentials ID
     }
 
     stages {
