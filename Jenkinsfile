@@ -28,10 +28,10 @@ pipeline {
                     sh 'docker rm -f paytm-static-test || true'
                     
                     // Run container on port 8080
-                    sh 'docker run -d --name paytm-static-test -p 8080:80 ${DOCKER_IMAGE}:latest'
+                    sh 'docker run -d --name paytm-static-test -p 8086:80 ${DOCKER_IMAGE}:latest'
                     
                     // Quick test (optional)
-                    sh 'curl -I http://localhost:8080 || true'
+                    sh 'curl -I http://localhost:8086 || true'
                 }
             }
         }
