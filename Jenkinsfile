@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "kalyan3599/paytm-static-site"
-        DOCKER_CREDENTIALS_ID = "1234"  // Jenkins Credentials ID
+        DOCKER_IMAGE = "naren3005/paytm"
+        DOCKER_CREDENTIALS_ID = "docker"  // Jenkins Credentials ID
     }
 
     stages {
